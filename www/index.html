@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <script type="text/javascript" src="phonegap.js"></script>
+        <title>Hello World</title>
+        <script>
+            document.addEventListener("deviceready",onDeviceReady,false);
+            var lumenTimer ;
+            function onDeviceReady(){
+                lumenTimer = navigator.LightSensor.watchLumen(onLumenSuccess,onLumenError);
+            }
+            function onLumenSuccess(Lumen){
+                document.getElementById("lumen").innerHTML=Lumen.value;
+            }
+            function onLumenError(Error){
+                alert(Error.code);
+            }
+        </script>
+    </head>
+    <body>
+       <div id="lumen" >0</div>
+    </body>
+</html>
